@@ -3,12 +3,17 @@ plugins {
     alias(libs.plugins.shadow)
     alias(libs.plugins.publishdata)
     java
+    id("xyz.jpenilla.run-paper") version "2.3.1"
+    id("net.minecrell.plugin-yml.paper") version "0.6.0"
 }
 
 group = "net.onelitefeather"
 version = "0.0.1"
 
 dependencies {
+    compileOnly(libs.paper)
+    implementation(libs.cloud.core)
+    implementation(libs.cloud.paper)
 }
 java {
     toolchain {
@@ -21,6 +26,19 @@ tasks {
         options.release.set(21)
         options.encoding = "UTF-8"
     }
+    runServer {
+        minecraftVersion("1.21.1")
+    }
+    shadowJar {
+        mergeServiceFiles()
+    }
+}
+
+paper {
+    main = "net.onelitefeather.gameruletemplate.GameRuleTemplate"
+    apiVersion = "1.21"
+    authors = listOf("TheMeinerLP", "OneLiteFeatherNET")
+    description = "A plugin that allows to copy and paste gamerules"
 }
 
 
@@ -29,7 +47,7 @@ publishData {
     val projectId: String by project
     val gitlabUrl: String by project
     useGitlabReposForProject(projectId, gitlabUrl)
-    publishTask("jar") //TODO: Change
+    publishTask("shadowJar")
 }
 
 publishing {
