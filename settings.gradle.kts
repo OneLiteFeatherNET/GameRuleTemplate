@@ -54,7 +54,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
             version("publishdata", "1.4.0")
-            version("shadow", "8.3.8")
+            version("shadow", "8.3.9")
             version("cloud.core", "2.0.0")
             version("cloud.paper", "2.0.0-SNAPSHOT")
 
