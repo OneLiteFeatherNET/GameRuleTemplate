@@ -58,7 +58,7 @@ dependencyResolutionManagement {
             version("cloud.core", "2.0.0")
             version("cloud.paper", "2.0.0-SNAPSHOT")
 
-            version("paper", "1.21.3-R0.1-SNAPSHOT")
+            version("paper", "26.1.2.build.72-stable")
 
             library("paper", "io.papermc.paper", "paper-api").versionRef("paper")
             library("cloud.core", "org.incendo", "cloud-core").versionRef("cloud.core")
