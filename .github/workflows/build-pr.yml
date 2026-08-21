@@ -1,23 +1,19 @@
 name: Build PR
-on: [pull_request]
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
 jobs:
-  build_pr:
-    if: github.repository_owner == 'OneLiteFeatherNET'
-    name: Build Pull Request Branch
-    description: This job builds the pull request branch on different operating systems.
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v7
-      - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v3
-      - name: Setup Java
-        uses: actions/setup-java@v5
-        with:
-          distribution: temurin
-          java-version: 21
-      - name: Build on ${{ matrix.os }}
-        run: ./gradlew clean build
+  build:
+    # Shared org build: Temurin toolchain, 3-OS matrix, tests and coverage.
+    uses: OneLiteFeatherNET/workflows/.github/workflows/gradle-build-pr.yml@v2.8.1
+    with:
+      java-version: "21"
+      java-distribution: "temurin"
+      run-tests: true
+    secrets: inherit
