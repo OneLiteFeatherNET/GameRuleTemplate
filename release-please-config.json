@@ -6,7 +6,14 @@
   "packages": {
     ".": {
       "package-name": "GameRuleTemplate",
-      "changelog-path": "CHANGELOG.md"
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "build.gradle.kts"
+        }
+      ]
     }
-  }
+  },
+  "bootstrap-sha": "bda53b2e730899c01e0eda8a068f79f8ab2eaf30"
 }
