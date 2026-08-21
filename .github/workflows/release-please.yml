@@ -18,6 +18,17 @@ jobs:
     uses: OneLiteFeatherNET/workflows/.github/workflows/release-please.yml@v2.8.1
     secrets: inherit
 
+
+  publish:
+    name: Publish to OneLiteFeatherRepo
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    uses: OneLiteFeatherNET/workflows/.github/workflows/gradle-publish.yml@v2.8.1
+    with:
+      java-version: "21"
+      java-distribution: "temurin"
+      publish-task: "publish"
+    secrets: inherit
   sbom:
     name: Attach SBOM to release
     needs: release-please
