@@ -55,7 +55,7 @@ dependencyResolutionManagement {
         create("libs") {
             version("publishdata", "1.4.0")
             version("shadow", "9.6.1")
-            version("cloud.core", "2.0.0")
+            version("cloud.core", "2.1.0")
             version("cloud.paper", "2.0.0")
 
             version("paper", "26.1.2.build.72-stable")
